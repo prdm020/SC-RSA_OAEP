@@ -6,7 +6,7 @@ Desenvolvido por: Eduardo Ferreira Marques Cavalcante(202006368) - T02 e Pedro R
 
 ## Descrição
 
-Este projeto em Python envolve a criação de um programa que pode cifrar e decifrar mensagens de arquivos usando a cifra de RAS em modo OAEP e pode assinar e verificar arquivos utilizando essa mesma cifra.
+Este projeto em Python envolve a criação de um programa que pode cifrar e decifrar mensagens de arquivos usando a cifra de RSA em modo OAEP e pode assinar e verificar arquivos utilizando essa mesma cifra.
 
 ## Rodando o projeto
 
