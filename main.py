@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
             aux = input("Deseja cifrar utilizando uma label(s/n):")
             if aux == "s":
-                label = input("Digite a label:", end="")
+                label = input("Digite a label:")
                 cifra = oaep.RSA_OLAP_enc(chave_publica, mensagem, label)
             elif aux == "n":
                 cifra = oaep.RSA_OLAP_enc(chave_publica, mensagem)
@@ -47,14 +47,17 @@ if __name__ == "__main__":
             
             aux = input("Deseja decifrar utilizando uma label(s/n):")
             if aux == "s":
-                label = input("Digite a label:", end="")
+                label = input("Digite a label:")
                 decifrado = oaep.RSA_OLAP_dec(chave_privada, cifra, label)
             elif aux == "n":
                 decifrado = oaep.RSA_OLAP_dec(chave_privada, cifra)
             else:
                 continue
-            u.output("decifrado_RSA_OAEP.txt", decifrado)
-            print("arquivo decifrado (decifrado_RSA_OAEP.txt)\n")
+            if decifrado == None:
+                continue
+            else:
+                u.output("decifrado_RSA_OAEP.txt", decifrado)
+                print("arquivo decifrado (decifrado_RSA_OAEP.txt)\n")
         
         elif acao == "3":
             mensagem = input("Digite nome do arquivo txt: ")
