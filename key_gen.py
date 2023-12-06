@@ -2,13 +2,9 @@ import random
 
 #gera uma chave pública e uma privada, ambas aleatórias (pub_key, pri_key) = ((n, e), (n, d))
 def gen_keys():
-    print("gerando primeiro primo...")
+    print("Gerando chaves...")
     p = random_prime()
-    print("primeiro primo criado!")
-    
-    print("gerando segundo primo...")
     q = random_prime()
-    print("segundo primo criado!")
     
     n = p * q
     aux = (p - 1)*(q - 1)
@@ -29,7 +25,7 @@ def gen_keys():
             break
         i += 1
 
-    print("chaves criadas!")
+    print("Chaves criadas!")
     return ((n, e), (n, d))
 
 

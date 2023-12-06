@@ -37,8 +37,22 @@ def mgf1(seed: bytes, length: int, hash_func=h.sha1):
 
     return T[:length]
 
+#faz xor entre dois valores do tipo bytes
 def xor_bytes(a: bytes, b: bytes, tamanho=0):
     ia = bytes_int(a)
     ib = bytes_int(b)
     aux = ia ^ ib
     return int_bytes(aux, tamanho)
+
+#abre e le bytes do arquivo
+def trata_mensagem(arquivo):
+    with open(arquivo, "rb") as a:
+        mensagem = a.read()
+        a.close()
+        return mensagem
+
+#cria arquivo de output
+def output(nome_arquivo, b):
+    with open(nome_arquivo, 'wb') as a:
+            a.write(b)
+            a.close()

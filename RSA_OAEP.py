@@ -15,6 +15,9 @@ def RSA_OLAP_enc(public_key, mensage, label=""):
 
     k = len(utils.int_bytes(n))
 
+    print(f"tamanho n: {k}")
+    print(f"tamanho mensagem: {len(mensage)}")
+    print(f"tamanho hlen: {len(lHash)}")
     if len(mensage) > k - 2*len(lHash) - 2:
         print("mensagem muito grande")
         return None
@@ -48,19 +51,19 @@ def RSA_OLAP_dec(private_key, cifra, label=""):
     label = label.encode()
 
     if len(label) > ((2^61) - 1):
-        print("erro de descriptografia1")
+        print("erro de descriptografia")
         return None
     
     k = len(utils.int_bytes(n))
 
     if len(cifra) != k:
-        print("erro de descriptografia2")
+        print("erro de descriptografia")
         return None
     
     lHash = h.sha1(label).digest()
 
     if k < 2*len(lHash) + 2:
-        print("erro de descriptografia3")
+        print("erro de descriptografia")
         return None
     
     c = utils.bytes_int(cifra)
@@ -70,7 +73,7 @@ def RSA_OLAP_dec(private_key, cifra, label=""):
     EM = utils.int_bytes(m, k)
 
     if EM[0] != 0:
-        print("erro de descriptografia4")
+        print("erro de descriptografia")
         return None
 
     maskedSeed = EM[1:1 + len(lHash)]
@@ -86,7 +89,7 @@ def RSA_OLAP_dec(private_key, cifra, label=""):
     DB = utils.xor_bytes(maskedDB, dbMask, k - len(lHash) - 1)
 
     if DB[:len(lHash)] != lHash:
-        print("erro de descriptografia5")
+        print("erro de descriptografia")
         return None
     
     i = len(lHash)
@@ -97,7 +100,7 @@ def RSA_OLAP_dec(private_key, cifra, label=""):
         elif DB[i] == 1:
             break
         else:
-            print("erro de descriptografia6")
+            print("erro de descriptografia")
             return None
 
     return DB[i+1:]
